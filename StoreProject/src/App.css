@@ -1,0 +1,11 @@
+header{
+    background-color: white;
+    position: fixed;
+    right:0%;
+    left: 0%;
+    z-index: 100; 
+    box-shadow: 0px 3px 10px rgba(165, 162, 162, 0.426);
+}
+main{
+    padding-top:  80px; 
+}

@@ -1,0 +1,26 @@
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:15px 30px;
+    
+}
+.icons,.pages__links{ 
+    display: flex;
+    align-items: center; 
+}
+.pages__links li, .toogle-theme{
+    padding: 4px 10px;
+    border-radius: 50%;
+    height: 35px; 
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.pages__links li:hover, .toogle-theme:hover{
+    background-color: black;
+    color: white;
+    transition: 0.8s;
+}
