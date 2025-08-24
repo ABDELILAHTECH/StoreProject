@@ -1,10 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { ProductContext } from "./ProductContext"
 import Home from "./Pages/Home"
 import Cart from "./Pages/Cart"
 import Favorites from "./Pages/Favorites"
-import { createContext, useEffect, useState } from "react"
 
-const ProductContext = createContext([])
+import { useEffect, useState } from "react"
+import NotFound from "./Pages/NotFound"
+import Cards from "./Components/Cards"
+import Card from "./Components/Card"
+
 
 
 export default function App() {
@@ -12,20 +16,18 @@ export default function App() {
   useEffect(()=>{
     fetch('https://fakestoreapi.com/products')
             .then(res=>res.json())            
-            .then(json=>setStoreProducts(json))
-           
-            
-   },[])
+            .then(json=>setStoreProducts(json))       
+   })
     
-  useEffect(()=>{
-     console.log(storeProducts);
 
-  },[storeProducts]) 
   return ( 
     <ProductContext.Provider value={storeProducts}>
+       <Cards >
+          <Card />
+       </Cards>
        <BrowserRouter>
           <Routes>
-            <Route path="*" />
+            <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Home/>} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/favorites" element={<Favorites />} />
