@@ -1,4 +1,6 @@
-.cards-container{
-    display: flex;
-    flex-wrap: wrap;
+.cards-list{
+    display: grid;
+    grid-template-columns:repeat(3,300PX);
+    gap: 20PX; 
+    padding: 10px;
 }
