@@ -1,19 +1,23 @@
+import { useContext } from "react"
 import styles from "./Styles/Card.module.css" 
 import { Heart } from "lucide-react"
+import { ThemeContext } from "../ThemeContext"
 
 export default function Card( { product } ) {
   
 
+  const {theme} = useContext(ThemeContext)
 
+  const toggleFontColor = () =>  theme==="light" ? "black": "white"
   
   return (
-    <li className={styles["card-container"]}>
+    <li className={styles["card-container"]}  style={{borderColor:toggleFontColor() }}>
          <img className={styles["card__img"]} src={product.image} alt={product.title} />
-         <h2  className={styles["card__title"]} >{product.title}</h2>
+         <h2  className={styles["card__title"]}  style={{color:toggleFontColor()}}>{product.title}</h2>
          <span className={styles["card__category"]}>{product.category}</span>        
-         <p   className={styles["card__description"]} >{product.description}</p>
-         <b   className={styles["card__price"]}>{product.price} $</b> 
-         <span className={styles["card__rating"]}>
+         <p   className={styles["card__description"]} style={{color:toggleFontColor(),}}>{product.description}</p>
+         <b   className={styles["card__price"]} style={{color:toggleFontColor()}}>{product.price} $</b> 
+         <span className={styles["card__rating"]} style={{backgroundColor:toggleFontColor()}}>
           {product.rating.rate}/5
          </span>
          <button className={styles["card__favorite-button"]} >

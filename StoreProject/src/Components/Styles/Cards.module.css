@@ -1,6 +1,38 @@
+.cards-container{
+    padding: 0% 200px; 
+
+}
 .cards-list{
     display: grid;
-    grid-template-columns:repeat(3,300PX);
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap: 20PX; 
     padding: 10px;
+}
+
+
+@media (max-width:1286px)  {
+    .cards-container{
+        padding: 0% 150px;
+    }
+}
+
+
+@media (max-width:980px)  {
+    .cards-container{
+       padding: 0% 50px;
+    }
+    .cards-list{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width:690px)  {
+    .cards-list{
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width:508px)  {
+    .cards-container{
+        padding: 0% 15px;
+    }
 }

@@ -7,23 +7,26 @@ import { ThemeContext } from '../ThemeContext'
 export default function NavBar() {
   const {theme,toggleMode} = useContext(ThemeContext);
 
+  const toggleIconsColor = () => theme==="light"? "black":"white"
+
+
   return (
-    <nav>
+    <nav style={{backgroundColor:theme==="light"? "white":"black"}}>
         <div className={styles["nav__logo"]}>
-            <Store size={35}  />
+            <Store size={35} color={toggleIconsColor()} />
         </div>
         <div className={styles["icons"]} >
             <ul className={styles["pages__links"]} >
                 <li>
-                    <Heart size={30} />
+                    <Heart size={30} color={toggleIconsColor()} />
                 </li>
                 <li>
-                  <ShoppingCart size={30} />
+                  <ShoppingCart size={30} color={toggleIconsColor()} />
                 </li>
             </ul>
             <div className={styles["toogle-theme"]} onClick={toggleMode} >
                 {
-                  theme === "light" ? <Sun size={30}/> : <Moon fill='black' size={30} /> 
+                  theme === "light" ? <Sun size={30}/> : <Moon fill='white' size={30} /> 
                 }
             </div>
         </div>

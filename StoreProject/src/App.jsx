@@ -15,9 +15,9 @@ import NavBar from "./Components/NavBar"
 
 
 export default function App() {
-  let [storeProducts,setStoreProducts] = useState([])
+  let [storeProducts,setStoreProducts] = useState()
 
-  let [theme,setTheme] = useState("light")
+  let [theme,setTheme] = useState(localStorage.getItem("theme") || "light")
   const toggleMode = () => {
      setTheme( prev => prev === "light" ? "dark" : "light" );
   }
@@ -27,19 +27,13 @@ export default function App() {
             .then(res=>res.json())            
             .then(json=>setStoreProducts(json))       
    })
-    
+  useEffect(()=>{
+    localStorage.setItem("theme",theme)
+  },[theme])   
 
   return ( 
     <ThemeContext.Provider value={{theme,setTheme,toggleMode}}  >
     <ProductContext.Provider value={storeProducts}>
-        <header>
-           <NavBar />
-        </header>
-        <main>
-          <Cards >
-             <Card />
-          </Cards>
-        </main>
        <BrowserRouter>
           <Routes>
             <Route path="*" element={<NotFound />} />
