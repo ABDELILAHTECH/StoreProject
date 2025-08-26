@@ -4,11 +4,15 @@ import { ThemeContext } from '../ThemeContext'
 import Cards from "../Components/Cards";
 import Card from "../Components/Card";
 import NavBar from "../Components/NavBar";
+import SearchBar from "../Components/SearchBar";
+import CategoryNav from "../Components/CategoryNav";
+import styles from "./Home.module.css"
 
 export default function Home() {
-  let products = useContext(ProductContext);
+  let {filtredProducts} = useContext(ProductContext);
   const {theme} = useContext(ThemeContext);
   
+
 
   return (
     <div>
@@ -16,7 +20,11 @@ export default function Home() {
            <NavBar />
         </header>
         <main  style={{backgroundColor:theme==="light"? "white":"black"}}>
-          <Cards products={products}  >
+          <div className={styles["after-header"]}>
+            <SearchBar />
+            <CategoryNav />
+          </div>
+          <Cards products={filtredProducts}  >
              <Card />
           </Cards>
         </main>

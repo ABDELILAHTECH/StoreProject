@@ -1,4 +1,5 @@
 import { Heart, Moon, ShoppingCart, Store, Sun } from 'lucide-react'
+import { Link } from "react-router-dom"
 import styles from './Styles/NavBar.module.css'
 import { useContext } from 'react'
 import { ThemeContext } from '../ThemeContext'
@@ -12,16 +13,23 @@ export default function NavBar() {
 
   return (
     <nav style={{backgroundColor:theme==="light"? "white":"black"}}>
-        <div className={styles["nav__logo"]}>
+        <Link to="/" className={styles["nav__logo"]}>
             <Store size={35} color={toggleIconsColor()} />
+        </Link>
+        <div >
+            
         </div>
         <div className={styles["icons"]} >
             <ul className={styles["pages__links"]} >
                 <li>
-                    <Heart size={30} color={toggleIconsColor()} />
+                    <Link to="/favorites" >
+                       <Heart className={styles["favorites-icon"]} size={30} color={toggleIconsColor()} />
+                    </Link>         
                 </li>
                 <li>
-                  <ShoppingCart size={30} color={toggleIconsColor()} />
+                  <Link to="/cart" >
+                     <ShoppingCart className={styles["cart-icon"]} size={30} color={toggleIconsColor()} />
+                  </Link>
                 </li>
             </ul>
             <div className={styles["toogle-theme"]} onClick={toggleMode} >

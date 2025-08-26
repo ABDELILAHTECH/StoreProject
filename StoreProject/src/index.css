@@ -5,38 +5,3 @@
     list-style: none;
     text-decoration: none;
 }
-/* index.css */
-
-/* Light */
-.light {
-  --bg-color: #ffffff;
-  --text-color: #000000;
-  --card-bg: #f9f9f9;
-  --btn-bg: #ffffff;
-  --btn-color: #000000;
-}
-
-/* Dark */
-.dark {
-  --bg-color: #121212;
-  --text-color: #ffffff;
-  --card-bg: #1e1e1e;
-  --btn-bg: #333333;
-  --btn-color: #ffffff;
-}
-
-/* Application */
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
-
-.card-container {
-  background-color: var(--card-bg);
-  color: var(--text-color);
-}
-
-.card__add-button {
-  background-color: var(--btn-bg);
-  color: var(--btn-color);
-}

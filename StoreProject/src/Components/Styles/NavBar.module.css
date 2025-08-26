@@ -4,9 +4,13 @@ nav{
     justify-content: space-between;
     padding:15px 200px;
 }
+.nav__logo{
+    cursor: pointer;
+}
 .icons,.pages__links{ 
     display: flex;
     align-items: center;
+    gap: 5PX; 
 }
 .pages__links li, .toogle-theme{
     padding: 4px 10px;
@@ -16,13 +20,14 @@ nav{
     display: flex;
     align-items: center;
     justify-content: center;
-
+    border:1px solid white;
+    cursor: pointer;
 }
 .pages__links li:hover, .toogle-theme:hover{
-    background-color: black;
-    color: white;
+    border-color: black;
     transition: 0.8s;
 }
+
 
 @media (max-width:1286px)  {
     nav{

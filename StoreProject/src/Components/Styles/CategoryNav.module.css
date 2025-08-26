@@ -1,0 +1,27 @@
+.category-list{
+    display: flex;
+    gap: 10px;
+    margin: auto; 
+}
+.category-list li input{
+    font-size: 17px; 
+    border: 1px solid;
+    padding: 5px 15px;
+    border-radius: 15px;
+    
+}
+.dark__default{
+   background-color: black;
+   color: white;
+}
+.light__default{
+   background-color: white;
+}
+.dark__active{
+    background-color: white;
+    color: black;
+}
+.light__active{
+    background-color: black;
+    color: white;
+}
