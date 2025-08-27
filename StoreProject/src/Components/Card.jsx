@@ -2,12 +2,19 @@ import { useContext } from "react"
 import styles from "./Styles/Card.module.css" 
 import { Heart } from "lucide-react"
 import { ThemeContext } from "../ThemeContext"
+import { CartContext } from "../CartContext"
 
 export default function Card( { product } ) {
   
 
-  const {theme} = useContext(ThemeContext)
+  const {theme} = useContext(ThemeContext);
+  const {cart,addToCart} = useContext(CartContext);
 
+  const addToCartHandleClick = () => {
+        addToCart(product)
+        console.log(cart);
+        
+  }
   const toggleFontColor = () =>  theme==="light" ? "black": "white"
   
   return (
@@ -23,7 +30,9 @@ export default function Card( { product } ) {
          <button className={styles["card__favorite-button"]} >
              <Heart size={28} /> 
          </button>        
-         <button type="button" className={styles["card__add-button"]}>Add to cart</button>
+         <button type="button" 
+         className={styles["card__add-button"]}
+         onClick={addToCartHandleClick}>Add to cart</button>
     </li>
   )
 }

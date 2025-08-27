@@ -17,3 +17,7 @@
 input:focus{
     outline: none;
 }
+.search__button{
+    background-color: white;
+    border: none;
+}

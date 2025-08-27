@@ -4,7 +4,9 @@ import styles from "./Styles/Cards.module.css"
 
 export default function Cards({ products }) {
 
-
+  if (products.length === 0) {
+    return <p style={{textAlign:"center"}}>Aucun produit disponible.</p>;
+  }
   if (products) {
     return (
     <div className={styles["cards-container"]} >
@@ -20,9 +22,7 @@ export default function Cards({ products }) {
     return <p>loading...</p>
   }
 
-  if (products.length === 0) {
-    return <p>Aucun produit disponible.</p>;
-  }
+ 
 
   
 }

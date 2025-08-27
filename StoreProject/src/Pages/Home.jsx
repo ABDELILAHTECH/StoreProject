@@ -16,9 +16,6 @@ export default function Home() {
 
   return (
     <div>
-      <header>
-           <NavBar />
-        </header>
         <main  style={{backgroundColor:theme==="light"? "white":"black"}}>
           <div className={styles["after-header"]}>
             <SearchBar />
