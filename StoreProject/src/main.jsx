@@ -10,21 +10,24 @@ import Favorites from "./Pages/Favorites"
 
 import NotFound from "./Pages/NotFound"
 import App from './App.jsx'
+import { FavoritesProvider } from './FavoritesContext.jsx'
 
-createRoot(document.getElementById('root'))  .render(
+createRoot(document.getElementById('root')).render(
         
     <ThemeProvider>
     <ProductProvider>
       <CartProvider>
-       <BrowserRouter>
-          <App />
-          <Routes>
-            <Route path="*" element={<NotFound />} />
-            <Route path="/" element={<Home/>} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/favorites" element={<Favorites />} />
-          </Routes>
-        </BrowserRouter>
+          <FavoritesProvider>
+            <BrowserRouter>
+               <App />
+               <Routes>
+                 <Route path="*" element={<NotFound />} />
+                 <Route path="/" element={<Home/>} />
+                 <Route path="/cart" element={<Cart />} />
+                 <Route path="/favorites" element={<Favorites />} />
+               </Routes>
+             </BrowserRouter>
+          </FavoritesProvider> 
        </CartProvider> 
     </ProductProvider>
     </ThemeProvider >

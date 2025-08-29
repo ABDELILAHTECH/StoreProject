@@ -7,7 +7,7 @@ export default function Cards({ products }) {
   if (products.length === 0) {
     return <p style={{textAlign:"center"}}>Aucun produit disponible.</p>;
   }
-  if (products) {
+
     return (
     <div className={styles["cards-container"]} >
       <ul className={styles["cards-list"]} >
@@ -17,10 +17,7 @@ export default function Cards({ products }) {
       </ul>
     </div>
   );
-  }
-  if (!products) {
-    return <p>loading...</p>
-  }
+
 
  
 

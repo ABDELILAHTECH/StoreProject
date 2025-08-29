@@ -1,13 +1,18 @@
 import { createContext, useState , useEffect} from "react"
+import { jsxs } from "react/jsx-runtime";
 
 
 export const ProductContext = createContext([])
 
 export function ProductProvider({ children }){
     let [storeProducts,setStoreProducts] = useState([]);
-    let [filtredProducts,setFiltredProducts] =useState([]);
+    let [filtredProducts,setFiltredProducts] =useState(
+      JSON.parse(localStorage.getItem("filtredProducts")) || []);
     const categories = ["All","Clothes","Electronics","Jewelery"];
     
+    useEffect(()=>{
+      localStorage.setItem("filtredProduct",JSON.stringify(filtredProducts))
+    })
       useEffect(()=>{
     fetch('https://fakestoreapi.com/products')
             .then(res=>res.json())            

@@ -3,17 +3,22 @@ import styles from "./Styles/Card.module.css"
 import { Heart } from "lucide-react"
 import { ThemeContext } from "../ThemeContext"
 import { CartContext } from "../CartContext"
+import { FavoritesContext } from "../FavoritesContext"
 
 export default function Card( { product } ) {
-  
+ 
 
   const {theme} = useContext(ThemeContext);
-  const {cart,addToCart} = useContext(CartContext);
+  const {addToCart} = useContext(CartContext);
+  const {addToFavorites} = useContext(FavoritesContext);
 
   const addToCartHandleClick = () => {
         addToCart(product)
-        console.log(cart);
         
+  }
+  const addToFavoritesHandleClick = () => {
+        addToFavorites(product)
+        // setFavoris(!favoris)
   }
   const toggleFontColor = () =>  theme==="light" ? "black": "white"
   
@@ -27,8 +32,9 @@ export default function Card( { product } ) {
          <span className={styles["card__rating"]} style={{backgroundColor:toggleFontColor()}}>
           {product.rating.rate}/5
          </span>
-         <button className={styles["card__favorite-button"]} >
-             <Heart size={28} /> 
+         <button className={styles["card__favorite-button"]}
+          onClick={addToFavoritesHandleClick} >
+             {<Heart /* fill={favoris ? "black" : "white"}  */ size={28} />}
          </button>        
          <button type="button" 
          className={styles["card__add-button"]}
