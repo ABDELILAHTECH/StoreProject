@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import styles from "./Styles/Card.module.css" 
 import { Heart } from "lucide-react"
 import { ThemeContext } from "../ThemeContext"
@@ -9,17 +9,18 @@ export default function Card( { product } ) {
  
 
   const {theme} = useContext(ThemeContext);
-  const {addToCart} = useContext(CartContext);
-  const {addToFavorites} = useContext(FavoritesContext);
-
+  const {cart , addToCart , removeFromCart } = useContext(CartContext);
+  const { favorites , addToFavorites , removeFromFavorites } = useContext(FavoritesContext);
+  const isFavorite = favorites.some( f => f.id === product.id)
+  const isCart = cart.some(p => p.id === product.id)
+  
   const addToCartHandleClick = () => {
-        addToCart(product)
+        isCart ? removeFromCart(product) : addToCart(product)
         
   }
   const addToFavoritesHandleClick = () => {
-        addToFavorites(product)
-        // setFavoris(!favoris)
-  }
+        isFavorite ? removeFromFavorites(product) : addToFavorites(product)        
+      }
   const toggleFontColor = () =>  theme==="light" ? "black": "white"
   
   return (
@@ -34,11 +35,11 @@ export default function Card( { product } ) {
          </span>
          <button className={styles["card__favorite-button"]}
           onClick={addToFavoritesHandleClick} >
-             {<Heart /* fill={favoris ? "black" : "white"}  */ size={28} />}
+             {<Heart  fill={isFavorite ? "black" : "white"}  size={28} />}
          </button>        
          <button type="button" 
          className={styles["card__add-button"]}
-         onClick={addToCartHandleClick}>Add to cart</button>
+         onClick={addToCartHandleClick}>{isCart ? "Remove from cart" : "Add to cart" }</button>
     </li>
   )
 }

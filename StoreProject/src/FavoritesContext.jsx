@@ -9,14 +9,16 @@ export function FavoritesProvider({ children }) {
   useEffect(()=>{
      localStorage.setItem("favorites",JSON.stringify(favorites))
   },[favorites])  
-  
-  //  const [favoris,setFavoris] = useState(JSON.parse(localStorage.getItem("favoris")) || false)
-  // useEffect(()=>{
-  //    localStorage.setItem("favoris",JSON.stringify(favoris))
-  // },[favoris])
 
   const addToFavorites = (item) => {
-    setFavorites((prev) => [...prev, item]);
+     
+    setFavorites((prev) => {
+      if (prev.some((p)=>p.id === item.id)) {
+          return prev;
+      }else{
+           return [...prev, item];
+      }
+    });
   };
 
   const removeFromFavorites = (item) => {
