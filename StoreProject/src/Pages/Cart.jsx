@@ -7,7 +7,7 @@ export default function Cart() {
   const {cart , totalPrice} = useContext(CartContext)
   return (
     <main  style={{backgroundColor:theme==="light"? "white":"black"}}>
-        <h1 style={{textAlign:"center" , margin:"10px 0" }}>{cart.length} Articles | {totalPrice} $</h1>
+        <h1 style={{textAlign:"center" , margin:"10px 0" }}>{cart.length} Articles | {totalPrice.toFixed(2)} $</h1>
         <Cards products={cart} />
     </main>
   )

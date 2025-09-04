@@ -20,7 +20,8 @@ export function ProductProvider({ children }){
                          setStoreProducts(json)
                          setFiltredProducts(json)
                     } 
-        )       
+        )     
+        filtredProducts.map(p=>[{...p,quantity:0}])  
    },[])
  
     const filterByCategory = (category) => {

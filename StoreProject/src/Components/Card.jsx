@@ -15,8 +15,10 @@ export default function Card( { product } ) {
   const isCart = cart.some(p => p.id === product.id)
   
   const addToCartHandleClick = () => {
-        isCart ? removeFromCart(product) : addToCart(product)
-        
+        addToCart(product)
+  }
+  const removeFromCartHandleClick = () => {
+        removeFromCart(product)
   }
   const addToFavoritesHandleClick = () => {
         isFavorite ? removeFromFavorites(product) : addToFavorites(product)        
@@ -36,10 +38,30 @@ export default function Card( { product } ) {
          <button className={styles["card__favorite-button"]}
           onClick={addToFavoritesHandleClick} >
              {<Heart  fill={isFavorite ? "black" : "white"}  size={28} />}
-         </button>        
-         <button type="button" 
+         </button>   
+             
+         {isCart? 
+          <>
+            <div>
+              <button style={{backgroundColor:"white",fontSize:"25px",fontWeight:"bold" ,padding:"0 7px",borderRadius:"50%"}}
+                       onClick={removeFromCartHandleClick}>-</button>
+              <span>{product.quantity}</span>
+              <button style={{backgroundColor:"white",fontSize:"25px",fontWeight:"bold" ,padding:"0 7px",borderRadius:"50%"}}
+                      onClick={addToCartHandleClick}>
+                        +
+              </button>
+            </div>
+            <button type="button" 
+            className={styles["card__add-button"]}
+            onClick={removeFromCartHandleClick}>Remove from cart</button>
+          </> 
+         :<button type="button" 
          className={styles["card__add-button"]}
-         onClick={addToCartHandleClick}>{isCart ? "Remove from cart" : "Add to cart" }</button>
+         onClick={addToCartHandleClick}>Add to cart</button>
+         
+         }  
+         
     </li>
   )
+  
 }
